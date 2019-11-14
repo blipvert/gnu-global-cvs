@@ -470,11 +470,16 @@ convert_put(CONVERT *cv, const char *ctags_x)
 	path = decode_path(path);
 	switch (cv->format) {
 	case FORMAT_CTAGS:
+	case FORMAT_CTAGS_PLUS:
 		fputs(tag, cv->op);
 		fputc('\t', cv->op);
 		fputs(convert_pathname(cv, path), cv->op);
 		fputc('\t', cv->op);
 		fputs(lineno, cv->op);
+		if (cv->format == FORMAT_CTAGS_PLUS) {
+			fputc('\t', cv->op);
+			fputs(rest, cv->op);
+		}
 		break;
 	case FORMAT_CTAGS_XID:
 		fid = gpath_path2fid(path, NULL);
@@ -560,6 +565,7 @@ convert_put_path(CONVERT *cv, const char *pattern, const char *path)
 void
 convert_put_using(CONVERT *cv, const char *tag, const char *path, int lineno, const char *rest, const char *fid)
 {
+	const char *p;
 	if (rest == NULL)
 		rest = "";	/* for safety */
 	if (flags & CONVERT_COLOR && !locked)
@@ -571,11 +577,16 @@ convert_put_using(CONVERT *cv, const char *tag, const char *path, int lineno, co
 		fputs(convert_pathname(cv, path), cv->op);
 		break;
 	case FORMAT_CTAGS:
+	case FORMAT_CTAGS_PLUS:
 		fputs(tag, cv->op);
 		fputc('\t', cv->op);
 		fputs(convert_pathname(cv, path), cv->op);
 		fputc('\t', cv->op);
 		fprintf(cv->op, "%d", lineno);
+		if (cv->format == FORMAT_CTAGS_PLUS) {
+			fputc('\t', cv->op);
+			code_fputs(rest, cv->op);
+		}
 		break;
 	case FORMAT_CTAGS_XID:
 		if (fid == NULL) {

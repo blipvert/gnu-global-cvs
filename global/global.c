@@ -600,12 +600,14 @@ main(int argc, char **argv)
 		case OPT_RESULT:
 			if (!strcmp(optarg, "ctags-x"))
 				format = FORMAT_CTAGS_X;
-			else if (!strcmp(optarg, "ctags-xid"))
+			else if (!strcmp(optarg, "ctags-xid"))	/* undocumented */
 				format = FORMAT_CTAGS_XID;
 			else if (!strcmp(optarg, "ctags"))
 				format = FORMAT_CTAGS;
-			else if (!strcmp(optarg, "ctags-mod"))
+			else if (!strcmp(optarg, "ctags-mod"))	/* undocumented */
 				format = FORMAT_CTAGS_MOD;
+			else if (!strcmp(optarg, "ctags-plus"))	/* undocumented */
+				format = FORMAT_CTAGS_PLUS;
 			else if (!strcmp(optarg, "path"))
 				format = FORMAT_PATH;
 			else if (!strcmp(optarg, "grep"))
