@@ -51,6 +51,8 @@
 		Make @file{GTAGS} in compact format.
 		This option does not influence @file{GRTAGS},
 		because that is always made in compact format.
+	@item{@option{-C}, @option{--directory} @arg{dir}}
+		Change the directory before doing all the work including parameter analysis.
 	@item{@option{--config}[=@arg{name}]}
 		Print the value of config variable @arg{name}.
 		If @arg{name} is not specified then print all names and values.

@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2005, 2006, 2008,
- *	2009, 2010, 2012, 2014, 2015, 2016, 2018
+ *	2009, 2010, 2012, 2014, 2015, 2016, 2018, 2020
  *	Tama Communications Corporation
  *
  * This file is part of GNU GLOBAL.
@@ -147,7 +147,7 @@ printconf(const char *name)
 	return exist;
 }
 
-static const char *short_options = "cd:f:iIn:oOqvwse";
+static const char *short_options = "cC:d:f:iIn:oOqvwse";
 static struct option const long_options[] = {
 	/*
 	 * These options have long name and short name.
@@ -157,6 +157,7 @@ static struct option const long_options[] = {
 	 * is left for compatibility.
 	 */
 	{"compact", no_argument, NULL, 'c'},
+	{"directory", required_argument, NULL, 'C'},
 	{"dump", required_argument, NULL, 'd'},
 	{"file", required_argument, NULL, 'f'},
 	{"idutils", no_argument, NULL, 'I'},
@@ -303,6 +304,9 @@ main(int argc, char **argv)
 			break;
 		case 'c':
 			cflag++;
+			break;
+		case 'C':
+			/* This option is already parsed in preparse_options() */
 			break;
 		case 'd':
 			dump_target = optarg;

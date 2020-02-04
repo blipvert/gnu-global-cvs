@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2014 Tama Communications Corporation
+ * Copyright (c) 2010, 2014, 2020 Tama Communications Corporation
  *
  * This file is part of GNU GLOBAL.
  *
@@ -176,8 +176,9 @@ args_close(void)
  *	@param[in]	argc	main()'s argc integer
  *	@param[in]	argv	main()'s argv string array
  *
- * Setup the "GTAGSCONF" and the "GTAGSLABEL" environment variables
+ * Setup the "GTAGSCONF" and "GTAGSLABEL" environment variables
  * according to the --gtagsconf and --gtagslabel options.
+ * Additionally changes directory acording to the --directory.
  */
 void
 preparse_options(int argc, char *const *argv)
@@ -186,8 +187,11 @@ preparse_options(int argc, char *const *argv)
 	char *p;
 	char *confpath = NULL;
 	char *label = NULL;
+	char *dir = NULL;
 	const char *opt_gtagsconf = "--gtagsconf";
 	const char *opt_gtagslabel = "--gtagslabel";
+	const char *opt_directory = "--directory";
+	const char *opt_C = "-C";
 
 	for (i = 1; i < argc; i++) {
 		if ((p = locatestring(argv[i], opt_gtagsconf, MATCH_AT_FIRST))) {
@@ -208,6 +212,21 @@ preparse_options(int argc, char *const *argv)
 				if (*p++ == '=' && *p)
 					label = p;
 			}
+		} else if ((p = locatestring(argv[i], opt_directory, MATCH_AT_FIRST))) {
+			if (*p == '\0') {
+				if (++i >= argc)
+					die("%s needs an argument.", opt_directory);
+				dir = argv[i];
+			} else {
+				if (*p++ == '=' && *p)
+					dir = p;
+			}
+		} else if ((p = locatestring(argv[i], opt_C, MATCH_AT_FIRST))) {
+			if (*p == '\0') {
+				if (++i >= argc)
+					die("%s needs an argument.", opt_C);
+				dir = argv[i];
+			}
 		}
 	}
 	if (confpath) {
@@ -221,6 +240,9 @@ preparse_options(int argc, char *const *argv)
 	}
 	if (label)
 		set_env("GTAGSLABEL", label);
+	if (dir)
+		if (chdir(dir) < 0)
+			die("cannot change directory to '%s'.", dir);
 }
 /**
  * prepend_options: creates a new argv main() array, by prepending (space separated)
