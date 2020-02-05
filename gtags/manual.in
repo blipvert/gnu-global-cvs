@@ -26,7 +26,7 @@
 @HEADER	GTAGS,1,June 2018,GNU Project
 @NAME	gtags - create tag files for global
 @SYNOPSIS
-	@name{gtags} [-ciIOqvw][-d @arg{tag-file}][-f @arg{file}][@arg{dbpath}]
+	@name{gtags} [-ciIOqvw][-C @arg{dir}][-d @arg{tag-file}][-f @arg{file}][@arg{dbpath}]
 @DESCRIPTION
 	@name{Gtags} is used to create tag files for @xref{global,1}.
 
