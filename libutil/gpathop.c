@@ -49,7 +49,7 @@ static int _mode;
 static int opened;
 static int created;
 
-int openflags;
+static int openflags;
 void
 set_gpath_flags(int flags) {
 	openflags = flags;

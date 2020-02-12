@@ -39,10 +39,10 @@
 #define ARGS_GFIND	3
 #define ARGS_BOTH	4
 
-int type;
-const char **argslist;
-FILE *ip;
-GFIND *gp;
+static int type;
+static const char **argslist;
+static FILE *ip;
+static GFIND *gp;
 
 /**
  * args_open:
