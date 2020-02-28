@@ -343,11 +343,11 @@ gpath_close(void)
 		dbop_close(dbop);
 		return;
 	}
-	if (_mode == 1 || _mode == 2) {
-		if (_startkey < _nextkey) {
-			snprintf(fid, sizeof(fid), "%d", _nextkey);
-			dbop_update(dbop, NEXTKEY, fid);
-		}
+	if (_mode == 1 ||
+           (_mode == 2 && _startkey < _nextkey))
+	{
+		snprintf(fid, sizeof(fid), "%d", _nextkey);
+		dbop_update(dbop, NEXTKEY, fid);
 	}
 	dbop_close(dbop);
 	if (_mode == 1)
