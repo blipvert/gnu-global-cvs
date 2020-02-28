@@ -314,7 +314,7 @@
 	@item{@var{GTAGSLIBPATH}}
 		If this variable is set, it is used as the path to search
 		for library functions. If the given symbol is not
-		found in the project, @name{global} also searches in these paths.
+		found in the current project, @name{global} also searches in these paths.
 		Since only @file{GTAGS} is targeted in the retrieval, this variable is
 		ignored when @option{-r} or @option{-s} is specified.
 	@item{@var{GTAGSLOGGING}}
