@@ -109,6 +109,8 @@
 		or @var{GREP_COLOR} defines it.
 		This option is effective to the following commands:
 		<no command>, -f, -g, -I, -P.
+	@item{@option{-C}, @option{--directory} @arg{dir}}
+		Change the directory before doing all the work including parameter analysis.
 	@item{@option{-d}, @option{--definition}}
 		Print locations of definitions.
 	@item{@option{-e}, @option{--regexp} @arg{pattern}}

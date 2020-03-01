@@ -21,6 +21,9 @@
 #define _ARGS_H_
 #include "gpathop.h"
 
+#define OPT_GTAGSCONF           200
+#define OPT_GTAGSLABEL          201
+
 void args_open(char *const *);
 void args_open_filelist(const char *);
 void args_open_gfind(GFIND *gp);

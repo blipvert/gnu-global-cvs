@@ -55,6 +55,8 @@
 		Enable auto-completion facility for the input form.
 		If @arg{limit} is specified, number of candidates is limited to the value.
 		Please note this function requires javascript language in your browser.
+	@item{@option{-C}, @option{--directory} @arg{dir}}
+		Change the directory before doing all the work including parameter analysis.
 	@item{@option{--caution}}
 		Display a caution message on the top page.
 	@item{@option{--cflow} @arg{cflowfile}}
