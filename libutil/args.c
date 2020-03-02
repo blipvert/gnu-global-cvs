@@ -182,7 +182,7 @@ args_close(void)
  * according to the --gtagsconf and --gtagslabel options.
  * Additionally changes directory acording to the --directory.
  */
-void
+int
 preparse_options(int argc, char *const *argv)
 {
 	int optchar;
@@ -208,6 +208,8 @@ preparse_options(int argc, char *const *argv)
 		case OPT_GTAGSLABEL:
 			label = optarg;
 			break;
+		case '?':
+			return -1;
 		default:
 			break;
 		}
@@ -234,6 +236,7 @@ preparse_options(int argc, char *const *argv)
 	 * This is needed for the calling of getopt() in main().
 	 */
         optind = 1;
+	return 0;
 }
 /**
  * prepend_options: creates a new argv main() array, by prepending (space separated)

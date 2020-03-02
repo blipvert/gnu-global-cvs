@@ -233,7 +233,8 @@ main(int argc, char **argv)
 	/*
 	 * pick up --gtagsconf, --gtagslabel and --directory (-C).
 	 */
-	preparse_options(argc, argv);
+	if (preparse_options(argc, argv) < 0)
+		usage();
 	/*
 	 * Get the project root directory.
 	 */

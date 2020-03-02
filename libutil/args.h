@@ -31,7 +31,7 @@ void args_open_nop(void);
 void args_open_both(char *const *, const char *);
 const char *args_read(void);
 void args_close(void);
-void preparse_options(int, char *const *);
+int preparse_options(int, char *const *);
 char **prepend_options(int *, char *const *, const char *options);
 char *serialize_options(int, char *const *);
 
