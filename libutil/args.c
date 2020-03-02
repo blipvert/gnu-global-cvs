@@ -191,7 +191,7 @@ preparse_options(int argc, char *const *argv)
 	char *label = NULL;
 	char *dir = NULL;
 	extern const char *short_options;
-	extern struct option const *long_options;
+	extern struct option const long_options[];
 
 	/*
 	 * restart scanning of the same argv by setting optind = 1.
