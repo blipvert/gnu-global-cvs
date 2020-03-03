@@ -189,6 +189,7 @@ help(void)
 const char *short_options = "acC:de:EifFgGIlL:MnNoOpPqrsS:tTuvVx";
 struct option const long_options[] = {
 	{"absolute", no_argument, NULL, 'a'},
+	{"directory", required_argument, NULL, 'C'},
 	{"completion", no_argument, NULL, 'c'},
 	{"definition", no_argument, NULL, 'd'},
 	{"extended-regexp", no_argument, NULL, 'E'},
